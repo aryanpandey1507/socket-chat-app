@@ -20,9 +20,9 @@
 
 //const io= require('socket.io')(8000);
 
-//import {io}  from 'socket.io-client'  
+///import {io}  from 'socket.io'  
  
-const socket = io('http://localhost:8000')
+const socket = io();
 
 const form = document.getElementById('send-container');
 
@@ -63,6 +63,7 @@ socket.on('user-joined',name=>{
     append(` ${name} joined the chat `,'right')
 
 })
+
 
 
 socket.on('receive',data=>{

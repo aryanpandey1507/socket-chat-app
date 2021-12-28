@@ -1,6 +1,14 @@
 // node server that will handle socket io connections
 
-const io= require('socket.io')(8000,{
+var app = require('express');
+var http = require('http');
+const server = http.createServer(app);
+const { Server } = require('socket.io')
+const io = new Server(server);
+
+var port = process.env.PORT || 3000
+
+const io= require('socket.io')(http,{
   cors:
   {
      origin:'*',
@@ -40,3 +48,7 @@ io.on('connection',socket=>{
 
     })
 })
+
+http.listen(port,function (){
+   console.log(`port no is ${port}`);
+});
